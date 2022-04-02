@@ -1,0 +1,6 @@
+setup.py
+dsa/__init__.py
+dsa.egg-info/PKG-INFO
+dsa.egg-info/SOURCES.txt
+dsa.egg-info/dependency_links.txt
+dsa.egg-info/top_level.txt
