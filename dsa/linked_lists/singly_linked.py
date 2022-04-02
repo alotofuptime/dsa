@@ -10,7 +10,7 @@ class ListNode:
         return self.__repr__()
 
 
-class LinkedList:
+class SinglyLinkedList:
     def __init__(self):
         self.__head = None
         self.__tail = None
@@ -21,6 +21,9 @@ class LinkedList:
         while curr:
             yield curr
             curr = curr.next
+
+    def __len__(self):
+        return self.size
 
     def __repr__(self):
         return " -> ".join([str(node.val) for node in self])
