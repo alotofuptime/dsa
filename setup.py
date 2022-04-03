@@ -7,7 +7,8 @@ setup(
         packages=[
             "dsa",
             "dsa.linked_lists",
-			"dsa.linked_lists.unit_tests"
+			"dsa.linked_lists.unit_tests",
+            "dsa.linked_lists.leetcode_solutions"
             ]
     )
 

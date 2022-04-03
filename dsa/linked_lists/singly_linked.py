@@ -145,3 +145,5 @@ class LinkedList:
     def search(self, key):
         return self.__contains__(key)
 
+    def search_nth(self, index):
+        pass
