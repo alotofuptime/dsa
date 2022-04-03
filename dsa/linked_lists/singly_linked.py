@@ -24,6 +24,9 @@ class LinkedList:
 
     def __contains__(self, key):
         return True if key in [node.val for node in self] else False
+	
+    def __len__(self):
+        return self.size
 
     def __repr__(self):
         return " -> ".join([str(node.val) for node in self])
