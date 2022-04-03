@@ -23,8 +23,8 @@ class LinkedList:
             curr = curr.next
 
     def __contains__(self, key):
-        return True if key in [node.val for node in self] else False
-	
+        return bool(key in [node.val for node in self])
+
     def __len__(self):
         return self.size
 
@@ -62,19 +62,19 @@ class LinkedList:
         return not self.__head
 
     def prepend(self, val):
-        new_node = self.__verify_node(val) 
+        new_node = self.__verify_node(val)
         if self.is_empty():
             self.__head = self.__tail = new_node
         else:
             new_node.next = self.__head
             self.__head = new_node
         self.__size += 1
-        
+
     def append(self, val):
-        self.__tail = new_node = self.__verify_node(val) 
+        self.__tail = new_node = self.__verify_node(val)
         if self.is_empty():
             return self.prepend(new_node)
-        
+
         curr = self.__head
         while curr.next:
             curr = curr.next
@@ -143,6 +143,5 @@ class LinkedList:
             prev, curr = curr, curr.next
 
     def search(self, key):
-        pass
-    
+        return self.__contains__(key)
 

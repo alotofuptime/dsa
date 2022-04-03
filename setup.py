@@ -6,7 +6,8 @@ setup(
         version="0.1",
         packages=[
             "dsa",
-            "dsa.linked_lists"
+            "dsa.linked_lists",
+			"dsa.linked_lists.unit_tests"
             ]
     )
 
