@@ -1,13 +1,17 @@
 from typing import Any, Optional
 
 class ListNode:
-    def __init__(self, data):
+    def __init__(self, data=0, next=None):
         self.data = data
-        self.next = None
+        self.next = ListNode(next) if next and not isinstance(next, ListNode) else next
+
+    def __repr__(self):
+        return f"Node({self.data})"
+
 
 class LinkedList:
     def __init__(self, head=None):
-        self.__head = head if not head else ListNode(head)
+        self.__head = ListNode(head) if head and not isinstance(head, ListNode) else head
         self.__size = 0 if not head else 1
 
     @property
@@ -16,6 +20,7 @@ class LinkedList:
 
     @head.setter
     def head(self, data):
+        data = ListNode(data) if not isinstance(data, ListNode) else data
         self.__head = data
         self.__size += 1
 
