@@ -1,13 +1,27 @@
 from typing import Any, Optional
 
 class ListNode:
+    @classmethod
+    def parse_node(cls, data):
+        if not data:
+            return 0
+        elif data and isinstance(data, ListNode):
+            return data.data
+        else:
+            return data
+
     def __init__(self, data=0, next=None):
-        self.__data = data
+        self.__data = self.parse_node(data)
         self.__next = ListNode(next) if next and not isinstance(next, ListNode) else next
 
     @property
     def data(self):
         return self.__data
+
+    @data.setter
+    def data(self, data):
+        self.__data = self.parse_node(data)
+
 
     @property
     def next(self):

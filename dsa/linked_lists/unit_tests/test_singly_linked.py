@@ -4,8 +4,6 @@ from dsa.linked_lists.singly_linked import LinkedList, ListNode
 
 class TestSinglyLinkedList(unittest.TestCase):
 
-    llist = None
-
     def setUp(self):
         self.llist = LinkedList()
 
@@ -35,8 +33,7 @@ class TestSinglyLinkedList(unittest.TestCase):
 
     def test_create_list_with_head_value_of_type_node(self):
         node = ListNode(9)
-        self.llist = LinkedList(node)
-        self.assertIsInstance(self.llist.head, ListNode)
+        self.llist.head = node
         self.assertEqual(str(self.llist.head), "Node(9)")
         self.assertIsInstance(self.llist.head.data, int)
 
@@ -64,6 +61,25 @@ class TestSinglyLinkedList(unittest.TestCase):
         node = ListNode(9)
         node.next = ListNode(11)
         self.assertEqual(node.next.data, 11)
+
+    def test_create_node_with_null_value(self):
+        node = ListNode(None)
+        self.assertEqual(node.data, 0)
+
+    def test_create_node_with_node_obj_as_data(self):
+        node = ListNode(ListNode(9))
+        self.assertEqual(node.data, 9)
+
+    def test_update_node_data_to_new_value(self):
+        node = ListNode(9)
+        node.data = 10
+        self.assertEqual(node.data, 10)
+
+    def test_update_node_data_to_null_value(self):
+        node = ListNode(9)
+        node.data = None
+        self.assertEqual(node.data, 0)
+
 
   #  def test_set_head(self, data):
    #     self.llist.head = data
