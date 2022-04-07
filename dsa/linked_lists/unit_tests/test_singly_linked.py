@@ -53,6 +53,18 @@ class TestSinglyLinkedList(unittest.TestCase):
         self.assertEqual(str(self.llist.head), "Node(9)")
         self.assertIsInstance(self.llist.head.data, int)
 
+    def test_update_node_next_to_new_value(self):
+        node = ListNode(9)
+        self.llist.head = node
+        node.next = 11
+        self.assertEqual(self.llist.head.next.data, 11)
+        self.assertIsInstance(self.llist.head.next, ListNode)
+
+    def test_update_node_next_to_new_node(self):
+        node = ListNode(9)
+        node.next = ListNode(11)
+        self.assertEqual(node.next.data, 11)
+
   #  def test_set_head(self, data):
    #     self.llist.head = data
 #        self.assertEqual(self.llist.head, data)

@@ -2,11 +2,23 @@ from typing import Any, Optional
 
 class ListNode:
     def __init__(self, data=0, next=None):
-        self.data = data
-        self.next = ListNode(next) if next and not isinstance(next, ListNode) else next
+        self.__data = data
+        self.__next = ListNode(next) if next and not isinstance(next, ListNode) else next
+
+    @property
+    def data(self):
+        return self.__data
+
+    @property
+    def next(self):
+        return self.__next
+
+    @next.setter
+    def next(self, data):
+        self.__next = ListNode(data) if not isinstance(data, ListNode) else data
 
     def __repr__(self):
-        return f"Node({self.data})"
+        return f"Node({self.__data})"
 
 
 class LinkedList:
