@@ -10,7 +10,9 @@ class TestSinglyLinkedList(unittest.TestCase):
     def test_empty_list(self):
         self.assertIsInstance(self.llist, LinkedList)
         self.assertIsNone(self.llist.head)
+        self.assertIsNone(self.llist.tail)
         self.assertEqual(self.llist.size, 0)
+        self.assertIs(self.llist.head, self.llist.tail)
 
     def test_empty_node(self):
         node = ListNode()
@@ -22,6 +24,7 @@ class TestSinglyLinkedList(unittest.TestCase):
         self.assertIsInstance(self.llist.head, ListNode)
         self.assertIsNotNone(self.llist.head)
         self.assertIsNone(self.llist.head.next)
+        self.assertIs(self.llist.head, self.llist.tail)
         self.assertEqual(self.llist.head.data, 9)
         self.assertEqual(self.llist.size, 1)
 
@@ -31,11 +34,23 @@ class TestSinglyLinkedList(unittest.TestCase):
         self.assertEqual(node.next.data, 10)
         self.assertIsInstance(node.next, ListNode)
 
+    def test_create_list_with_head_value_as_node_with_next_value(self):
+        node = ListNode(9, 10)
+        self.llist = LinkedList(node)
+        self.assertEqual(node.data, 9)
+        self.assertEqual(node.next.data, 10)
+        self.assertEqual(self.llist.size, 2)
+        self.assertEqual(self.llist.head.next.data, node.next.data)
+        self.assertIs(self.llist.head.next, self.llist.tail)
+        self.assertIsNone(self.llist.tail.next)
+        self.assertIsInstance(node.next, ListNode)
+
     def test_create_list_with_head_value_of_type_node(self):
         node = ListNode(9)
         self.llist.head = node
         self.assertEqual(str(self.llist.head), "Node(9)")
         self.assertIsInstance(self.llist.head.data, int)
+        self.assertIs(self.llist.head, self.llist.tail)
 
     def test_set_head_with_empty_list(self):
         self.llist = LinkedList()
